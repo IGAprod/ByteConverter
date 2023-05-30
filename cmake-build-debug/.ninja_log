@@ -1,0 +1,8 @@
+# ninja log v5
+0	347	1685407124016253234	CMakeFiles/testing.dir/Utilities.cpp.o	ff88701bb1879689
+0	62	1685425396657376324	build.ninja	ab07d12a434422c1
+0	530	1685411795405201845	CMakeFiles/testing.dir/ByteCodeConverter/ByteCodeConverter.cpp.o	71bab13a0eda5346
+0	350	1685407824694529319	CMakeFiles/testing.dir/Utilities/Utilities.cpp.o	faba1872f6bdb0b
+1	9	1685411800657184030	CMakeFiles/testing.dir/Google_tests/convert_test.cpp.o	d8929360065b3fcf
+9	50	1685411800697183895	testing	9313248e84316e55
+1	432	1685410532124127850	CMakeFiles/testing.dir/main.cpp.o	d131bf588d03b59e
