@@ -1,19 +1,19 @@
 #include "ByteCodeConverter.h"
 
 void Source::ReadBytes (const std::string& fileName)
+{
+    std::ifstream read;
+    read.open(fileName, std::ios::binary);
+
+    std::vector<uint8_t> bytes;
+
+    if (read.is_open())
     {
-        std::ifstream read;
-        read.open(fileName, std::ios::binary);
-
-        std::vector<uint8_t> bytes;
-
-        if (read.is_open())
-        {
-            bytes = std::vector<uint8_t>(std::istreambuf_iterator<char>(read), {});
-        }
-
-        data = bytes;
+        bytes = std::vector<uint8_t>(std::istreambuf_iterator<char>(read), {});
     }
+
+    data = bytes;
+}
 
 bool Source::getBytes(size_t begin, size_t end, std::vector<uint8_t> &chunk) const {
     if (!data.empty())
@@ -39,7 +39,7 @@ bool Source::getBytes(size_t begin, size_t end, std::vector<uint8_t> &chunk) con
 
 void Sink::saveData (const std::string& fileName, const std::string& data) const
 {
-    std::cout << data << std::endl;
+//    std::cout << data << std::endl;
 
     std::ofstream out;
     out.open(fileName, std::ios::app);
@@ -60,15 +60,19 @@ std::string ByteCodeConverter::convert_bytes(std::vector<uint8_t> bytes_to_conve
         int data_type = bytes_to_convert[i] >> 6;
         switch(data_type)
         {
+            unsigned char val;
             case 0x00:
-                result += std::to_string(bytes_to_convert[i] << 2);
+                val = bytes_to_convert[i] << 2;
+                result += std::to_string(val >> 2);
                 break;
             case 0x01:
                 if (0x1 & (bytes_to_convert[i] >> 5)) {result += '-';}
-                result += std::to_string(bytes_to_convert[i] << 3);
+                val = bytes_to_convert[i] << 3;
+                result += std::to_string(val >> 3);
                 break;
-            case 0x10:
-                result +=  std::to_string(bytes_to_convert[i] + 97);
+            case 0x02:
+                val = bytes_to_convert[i] << 2;
+                result +=  char((val >> 2) + 97);
                 break;
             default:
                 break;
@@ -85,14 +89,18 @@ void ByteCodeConverter::convert_bytes_thread(SourceInterface &source, SinkInterf
 
     while(state == CONVERTING)
     {
-        std::vector<uint8_t> chunk(8);
+        std::vector<uint8_t> chunk;
         if (source.getBytes(begin, begin + chunk_size, chunk))
         {
             std::string result = convert_bytes(chunk);
             sink.saveData(fileName, result);
+            chunk.clear();
         }
         else
         {
+            std::string result = convert_bytes(chunk);
+            sink.saveData(fileName, result);
+            chunk.clear();
             state = EXIT;
             return;
         }

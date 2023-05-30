@@ -35,7 +35,7 @@
 // code outside Google Test.
 //
 // This file is fundamental to Google Test.  All other Google Test source
-// files are expected to #include this.  Therefore, it cannot #include
+// resources are expected to #include this.  Therefore, it cannot #include
 // any other Google Test header.
 
 // IWYU pragma: private, include "gtest/gtest.h"
@@ -462,7 +462,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 #define GTEST_HAS_EXCEPTIONS _HAS_EXCEPTIONS
 #elif defined(__clang__)
 // clang defines __EXCEPTIONS if and only if exceptions are enabled before clang
-// 220714, but if and only if cleanups are enabled after that. In Obj-C++ files,
+// 220714, but if and only if cleanups are enabled after that. In Obj-C++ resources,
 // there can be cleanups for ObjC exceptions which also need cleanups, even if
 // C++ exceptions are disabled. clang has __has_feature(cxx_exceptions) which
 // checks for C++ exceptions starting at clang r206352, but which checked for

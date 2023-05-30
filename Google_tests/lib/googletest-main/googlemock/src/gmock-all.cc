@@ -30,7 +30,7 @@
 //
 // Google C++ Mocking Framework (Google Mock)
 //
-// This file #includes all Google Mock implementation .cc files.  The
+// This file #includes all Google Mock implementation .cc resources.  The
 // purpose is to allow a user to build Google Mock by compiling this
 // file alone.
 
@@ -38,7 +38,7 @@
 // when it's fused.
 #include "gmock/gmock.h"
 
-// The following lines pull in the real gmock *.cc files.
+// The following lines pull in the real gmock *.cc resources.
 #include "src/gmock-cardinalities.cc"
 #include "src/gmock-internal-utils.cc"
 #include "src/gmock-matchers.cc"

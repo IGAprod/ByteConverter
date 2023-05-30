@@ -34,7 +34,7 @@
 //
 // Writing a unit test using Google C++ testing framework is easy as 1-2-3:
 
-// Step 1. Include necessary header files such that the stuff your
+// Step 1. Include necessary header resources such that the stuff your
 // test logic needs is declared.
 //
 // Don't forget gtest.h, which declares the testing framework.

@@ -114,7 +114,7 @@ def GetFlag(flag):
 
 
 def GetSourceDir():
-  """Returns the absolute path of the directory where the .py files are."""
+  """Returns the absolute path of the directory where the .py resources are."""
 
   return os.path.abspath(GetFlag('source_dir'))
 
@@ -254,7 +254,7 @@ def Main():
   # unittest.main().  Otherwise the latter will be confused by the
   # --gtest_* flags.
   _ParseAndStripGTestFlags(sys.argv)
-  # The tested binaries should not be writing XML output files unless the
+  # The tested binaries should not be writing XML output resources unless the
   # script explicitly instructs them to.
   if GTEST_OUTPUT_VAR_NAME in os.environ:
     del os.environ[GTEST_OUTPUT_VAR_NAME]

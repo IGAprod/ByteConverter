@@ -1,23 +1,24 @@
 cmake_minimum_required(VERSION 3.25)
-project(testing)
 
+project(TestTask C CXX)
+
+set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-SET(SOURCES
-        Utilities/Utilities.cpp
-        main.cpp
-)
+#enable_testing()
 
-SET(HEADERS
-        Utilities/Utilities.h
-        ByteCodeConverter/ByteCodeConverter.h)
+include_directories(${PROJECT_SOURCE_DIR}/Utilities ${PROJECT_SOURCE_DIR}/resources)
+#add_subdirectory(Google_tests)
 
-add_executable(testing main.cpp ByteCodeConverter/ByteCodeConverter.h Utilities/Utilities.h Utilities/Utilities.cpp ByteCodeConverter/ByteCodeConverter.cpp Google_tests/convert_test.cpp)
+#SET(Headers
+#        Utilities/Utilities.h
+#        ByteCodeConverter/ByteCodeConverter.h
+#)
+#
+#SET(Sources
+#        Utilities/Utilities.cpp
+#        main.cpp
+#)
 
-target_include_directories(testing
-        PRIVATE
-            ${PROJECT_SOURCE_DIR}/Utilities
-)
-
-add_subdirectory(Google_tests/lib/googletest-main)
-add_subdirectory(Google_tests)
+add_executable(TestTask main.cpp Utilities/Utilities.cpp ByteCodeConverter/ByteCodeConverter.cpp) #Google_tests/convert_test.cpp

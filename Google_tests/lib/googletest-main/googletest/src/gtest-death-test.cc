@@ -1108,7 +1108,7 @@ DeathTest::TestRole NoExecDeathTest::AssumeRole() {
   DeathTest::set_last_death_test_message("");
   CaptureStderr();
   // When we fork the process below, the log file buffers are copied, but the
-  // file descriptors are shared.  We flush all log files here so that closing
+  // file descriptors are shared.  We flush all log resources here so that closing
   // the file descriptors in the child process doesn't throw off the
   // synchronization between descriptors and buffers in the parent process.
   // This is as close to the fork as possible to avoid a race condition in case
@@ -1123,7 +1123,7 @@ DeathTest::TestRole NoExecDeathTest::AssumeRole() {
     GTEST_DEATH_TEST_CHECK_SYSCALL_(close(pipe_fd[0]));
     set_write_fd(pipe_fd[1]);
     // Redirects all logging to stderr in the child process to prevent
-    // concurrent writes to the log files.  We capture stderr in the parent
+    // concurrent writes to the log resources.  We capture stderr in the parent
     // process and append the child process' output to a log.
     LogToStderr();
     // Event forwarding to the listeners of event listener API mush be shut

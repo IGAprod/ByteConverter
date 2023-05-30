@@ -21,43 +21,47 @@ typedef enum
 
 class SourceInterface
 {
-public:
-    virtual bool getBytes(size_t begin, size_t end, std::vector<uint8_t> &data) const = 0;
+    public:
+        virtual ~SourceInterface()= default;
+        virtual bool getBytes(size_t begin, size_t end, std::vector<uint8_t> &data) const = 0;
 };
 
 class SinkInterface
 {
-public:
-    virtual void saveData(const std::string& fileName, const std::string& data) const = 0;
+    public:
+        virtual ~SinkInterface()= default;
+        virtual void saveData(const std::string& fileName, const std::string& start_convert_bytes) const = 0;
 };
 
 class Source : public SourceInterface
 {
-public:
-    void ReadBytes (const std::string& fileName);
+    public:
+        void ReadBytes (const std::string& fileName);
+        bool getBytes(size_t begin, size_t end, std::vector<uint8_t> &chunk) const override;
 
-    bool getBytes(size_t begin, size_t end, std::vector<uint8_t> &chunk) const override;
-
-private:
-    std::vector<uint8_t> data;
+    private:
+        std::vector<uint8_t> data;
 };
 
 class Sink : public SinkInterface
 {
-public:
-    void saveData (const std::string& fileName, const std::string& data) const override;
+    public:
+        void saveData (const std::string& fileName, const std::string& data) const override;
+        ~Sink() override= default;
 };
 
 class ByteCodeConverter
 {
-private:
-    convert_state state = WAITING_TO_START;
-    std::mutex convert_mutex;
-    std::condition_variable convert_cv;
+    private:
+        static std::string convert_bytes(std::vector<uint8_t> bytes_to_convert);
+        void convert_bytes_thread(SourceInterface &source, SinkInterface &sink, const std::string& fileName);
 
-public:
-    std::string convert_bytes(std::vector<uint8_t> bytes_to_convert);
-    void convert_bytes_thread(SourceInterface &source, SinkInterface &sink, const std::string& fileName);
-    void start_convert_bytes(SourceInterface &source, SinkInterface &sink, const std::string& fileName);
-    void stop_convert_bytes();
+    public:
+        void start_convert_bytes(SourceInterface &source, SinkInterface &sink, const std::string& fileName);
+        void stop_convert_bytes();
+
+    private:
+        convert_state state = WAITING_TO_START;
+        std::mutex convert_mutex;
+        std::condition_variable convert_cv;
 };

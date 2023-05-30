@@ -2210,9 +2210,9 @@ constexpr bool StaticAssertTypeEq() noexcept {
 // directory-separator character.
 GTEST_API_ std::string TempDir();
 
-// Returns a path to a directory that contains ancillary data files that might
+// Returns a path to a directory that contains ancillary data resources that might
 // be used by tests. It is implementation dependent whether or not the path is
-// terminated by the directory-separator character. The directory and the files
+// terminated by the directory-separator character. The directory and the resources
 // in it should be considered read-only.
 GTEST_API_ std::string SrcDir();
 

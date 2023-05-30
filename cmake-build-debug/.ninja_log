@@ -1,8 +1,18 @@
 # ninja log v5
-0	347	1685407124016253234	CMakeFiles/testing.dir/Utilities.cpp.o	ff88701bb1879689
-0	62	1685425396657376324	build.ninja	ab07d12a434422c1
-0	530	1685411795405201845	CMakeFiles/testing.dir/ByteCodeConverter/ByteCodeConverter.cpp.o	71bab13a0eda5346
-0	350	1685407824694529319	CMakeFiles/testing.dir/Utilities/Utilities.cpp.o	faba1872f6bdb0b
-1	9	1685411800657184030	CMakeFiles/testing.dir/Google_tests/convert_test.cpp.o	d8929360065b3fcf
+1	1078	1685463189004117501	Google_tests/CMakeFiles/GoogleTests.dir/convert_test.cpp.o	48ddb80ef1352141
+1	555	1685463063879831164	Google_tests/CMakeFiles/GoogleTests.dir/__/ByteCodeConverter/ByteCodeConverter.cpp.o	e3f09becabd82ee9
+0	46	1685477388235454641	TestTask	92f342b07217a90f
+0	13	1685477736665600655	build.ninja	6deee92c6fa89bca
+1	996	1685476928224092842	CMakeFiles/TestTask.dir/Google_tests/convert_test.cpp.o	68b64126b35940ab
+0	418	1685465959826714085	CMakeFiles/TestTask.dir/main.cpp.o	1857466caa8dbd36
+0	880	1685441455241365394	Google_tests/CMakeFiles/convert_test.dir/convert_test.cpp.o	6455aaad5c818dbc
+1	330	1685464825107925948	CMakeFiles/TestTask.dir/Utilities/Utilities.cpp.o	e4b96b8a599e9983
+1078	1152	1685463189076117667	Google_tests/GoogleTests	ab4eb550bd1005c8
+1	521	1685466861196889159	CMakeFiles/TestTask.dir/ByteCodeConverter/ByteCodeConverter.cpp.o	8e58a986f740e81b
+1	313	1685461652717418975	Google_tests/CMakeFiles/GoogleTests.dir/__/Utilities/Utilities.cpp.o	9c659934ce1596fd
 9	50	1685411800697183895	testing	9313248e84316e55
-1	432	1685410532124127850	CMakeFiles/testing.dir/main.cpp.o	d131bf588d03b59e
+0	13	1685477736665600655	build.ninja	6deee92c6fa89bca
+1	332	1685477737001608050	CMakeFiles/TestTask.dir/Utilities/Utilities.cpp.o	21de62a9d9b27d12
+1	445	1685477737113610506	CMakeFiles/TestTask.dir/main.cpp.o	25495fb155348e0
+1	537	1685477737205612522	CMakeFiles/TestTask.dir/ByteCodeConverter/ByteCodeConverter.cpp.o	dcfcb2085160609b
+537	606	1685477737277614101	TestTask	92f342b07217a90f

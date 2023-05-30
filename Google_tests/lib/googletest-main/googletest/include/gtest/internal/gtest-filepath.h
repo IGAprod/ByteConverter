@@ -57,7 +57,7 @@ namespace internal {
 
 // FilePath - a class for file and directory pathname manipulation which
 // handles platform-specific conventions (like the pathname separator).
-// Used for helper functions for naming files in a directory for xml output.
+// Used for helper functions for naming resources in a directory for xml output.
 // Except for Set methods, all methods are const or static, which provides an
 // "immutable value object" -- useful for peace of mind.
 // A FilePath with a value ending in a path separator ("like/this/") represents

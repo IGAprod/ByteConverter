@@ -217,7 +217,7 @@ FilePath FilePath::RemoveFileName() const {
   return FilePath(dir);
 }
 
-// Helper functions for naming files in a directory for xml output.
+// Helper functions for naming resources in a directory for xml output.
 
 // Given directory = "dir", base_name = "test", number = 0,
 // extension = "xml", returns "dir/test.xml". If number is greater

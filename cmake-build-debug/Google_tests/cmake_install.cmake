@@ -1,4 +1,4 @@
-# Install script for directory: /home/igorkinev/Desktop/work_projects/testing/Google_tests
+# Install script for directory: /home/igorkinev/Desktop/testing/repo/ByteConverter/Google_tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

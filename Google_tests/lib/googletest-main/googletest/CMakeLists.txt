@@ -39,7 +39,7 @@ endif()
 
 # Name of the project.
 #
-# CMake files in this project can refer to the root source directory
+# CMake resources in this project can refer to the root source directory
 # as ${gtest_SOURCE_DIR} and to the root binary directory as
 # ${gtest_BINARY_DIR}.
 # Language "C" is required for find_package(Threads).
@@ -109,7 +109,7 @@ if (INSTALL_GTEST)
     DESTINATION ${cmake_files_install_dir})
 endif()
 
-# Where Google Test's .h files can be found.
+# Where Google Test's .h resources can be found.
 set(gtest_build_include_dirs
   "${gtest_SOURCE_DIR}/include"
   "${gtest_SOURCE_DIR}")

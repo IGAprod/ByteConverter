@@ -1,4 +1,4 @@
-# Install script for directory: /home/igorkinev/Desktop/work_projects/testing/Google_tests/lib/googletest-main
+# Install script for directory: /home/igorkinev/Desktop/testing/repo/ByteConverter/Google_tests/lib/googletest-main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/igorkinev/Desktop/work_projects/testing/cmake-build-debug/Google_tests/lib/googletest-main/googlemock/cmake_install.cmake")
+  include("/home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/Google_tests/lib/googletest-main/googlemock/cmake_install.cmake")
 
 endif()
 

@@ -90,7 +90,7 @@ macro(config_compiler_and_linker)
     # Suppress "unreachable code" warning
     # http://stackoverflow.com/questions/3232669 explains the issue.
     set(cxx_base_flags "${cxx_base_flags} -wd4702")
-    # Ensure MSVC treats source files as UTF-8 encoded.
+    # Ensure MSVC treats source resources as UTF-8 encoded.
     if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
       set(cxx_base_flags "${cxx_base_flags} -utf-8")
     endif()
@@ -220,7 +220,7 @@ endfunction()
 # cxx_executable_with_flags(name cxx_flags libs srcs...)
 #
 # creates a named C++ executable that depends on the given libraries and
-# is built from the given source files with the given compiler flags.
+# is built from the given source resources with the given compiler flags.
 function(cxx_executable_with_flags name cxx_flags libs)
   add_executable(${name} ${ARGN})
   if (MSVC)
@@ -247,7 +247,7 @@ endfunction()
 # cxx_executable(name dir lib srcs...)
 #
 # creates a named target that depends on the given libs and is built
-# from the given source files.  dir/name.cc is implicitly included in
+# from the given source resources.  dir/name.cc is implicitly included in
 # the source file list.
 function(cxx_executable name dir libs)
   cxx_executable_with_flags(
@@ -274,7 +274,7 @@ endif()
 # cxx_test_with_flags(name cxx_flags libs srcs...)
 #
 # creates a named C++ test that depends on the given libs and is built
-# from the given source files with the given compiler flags.
+# from the given source resources with the given compiler flags.
 function(cxx_test_with_flags name cxx_flags libs)
   cxx_executable_with_flags(${name} "${cxx_flags}" "${libs}" ${ARGN})
     add_test(NAME ${name} COMMAND "$<TARGET_FILE:${name}>")
@@ -283,7 +283,7 @@ endfunction()
 # cxx_test(name libs srcs...)
 #
 # creates a named test target that depends on the given libs and is
-# built from the given source files.  Unlike cxx_test_with_flags,
+# built from the given source resources.  Unlike cxx_test_with_flags,
 # test/name.cc is already implicitly included in the source file list.
 function(cxx_test name libs)
   cxx_test_with_flags("${name}" "${cxx_default}" "${libs}"
@@ -327,7 +327,7 @@ endfunction()
 
 # install_project(targets...)
 #
-# Installs the specified targets and configures the associated pkgconfig files.
+# Installs the specified targets and configures the associated pkgconfig resources.
 function(install_project)
   if(INSTALL_GTEST)
     install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
@@ -350,7 +350,7 @@ function(install_project)
           OPTIONAL)
       endforeach()
     endif()
-    # Configure and install pkgconfig files.
+    # Configure and install pkgconfig resources.
     foreach(t ${ARGN})
       set(configured_pc "${generated_dir}/${t}.pc")
       configure_file("${PROJECT_SOURCE_DIR}/cmake/${t}.pc.in"

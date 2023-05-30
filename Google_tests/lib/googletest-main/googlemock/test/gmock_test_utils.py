@@ -36,7 +36,7 @@ from googletest.test import gtest_test_utils
 
 
 def GetSourceDir():
-  """Returns the absolute path of the directory where the .py files are."""
+  """Returns the absolute path of the directory where the .py resources are."""
 
   return gtest_test_utils.GetSourceDir()
 

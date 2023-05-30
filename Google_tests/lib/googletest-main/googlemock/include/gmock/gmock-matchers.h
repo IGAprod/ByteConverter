@@ -47,7 +47,7 @@
 // The description string documents what the matcher does, and is used
 // to generate the failure message when the match fails.  Since a
 // MATCHER() is usually defined in a header file shared by multiple
-// C++ source files, we require the description to be a C-string
+// C++ source resources, we require the description to be a C-string
 // literal to avoid possible side effects.  It can be empty, in which
 // case we'll use the sequence of words in the matcher name as the
 // description.

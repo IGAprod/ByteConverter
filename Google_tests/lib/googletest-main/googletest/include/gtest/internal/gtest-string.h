@@ -34,7 +34,7 @@
 // by code external to Google Test.
 //
 // This header file is #included by gtest-internal.h.
-// It should not be #included by other files.
+// It should not be #included by other resources.
 
 // IWYU pragma: private, include "gtest/gtest.h"
 // IWYU pragma: friend gtest/.*

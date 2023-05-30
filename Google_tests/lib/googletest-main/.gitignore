@@ -11,7 +11,7 @@ bazel-testlogs
 # python
 *.pyc
 
-# Visual Studio files
+# Visual Studio resources
 .vs
 *.sdf
 *.opensdf
@@ -24,7 +24,7 @@ Win32-Release/
 x64-Debug/
 x64-Release/
 
-# Ignore autoconf / automake files
+# Ignore autoconf / automake resources
 Makefile.in
 aclocal.m4
 configure
@@ -41,12 +41,12 @@ googlemock/m4
 googlemock/fused-src/
 googletest/fused-src/
 
-# macOS files
+# macOS resources
 .DS_Store
 googletest/.DS_Store
 googletest/xcode/.DS_Store
 
-# Ignore cmake generated directories and files.
+# Ignore cmake generated directories and resources.
 CMakeFiles
 CTestTestfile.cmake
 Makefile
