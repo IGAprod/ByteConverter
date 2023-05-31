@@ -8,6 +8,9 @@ int main() {
     std::string inputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/Source/data.bin";
     std::string outputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/Source/save.txt";
 
+    eraseFile(inputFileName);
+    eraseFile(outputFileName);
+
     //Some unsigned integers
     std::vector<uint8_t> unsigned_integer_array;
     unsigned_integer_array.emplace_back(std::bitset<8>("00001101").to_ulong()); // 13

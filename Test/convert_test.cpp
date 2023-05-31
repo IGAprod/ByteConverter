@@ -1,5 +1,11 @@
 #include "convert_test.h"
 
+void segFaultHandler(int signal)
+{
+    std::cout << "Segmentation fault" << std::endl;
+    exit(signal);
+}
+
 TEST(ByteCodeConverterTest, Convert)
 {
     std::string inputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/data.bin";
@@ -116,6 +122,8 @@ TEST(ByteCodeConverterTest, ConvertWithBrokenBytes)
 
 TEST(ByteCodeConverterTest, StopConvert)
 {
+    signal(SIGSEGV, segFaultHandler);
+
     std::string inputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/data.bin";
     std::string outputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/save.txt";
 
@@ -163,6 +171,7 @@ TEST(ByteCodeConverterTest, StopConvert)
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
     byteCodeConverter.stop_convert_bytes();
+
 }
 
 int main(int argc, char **argv) {
