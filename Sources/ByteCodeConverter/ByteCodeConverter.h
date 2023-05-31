@@ -22,14 +22,12 @@ typedef enum
 class SourceInterface
 {
     public:
-        virtual ~SourceInterface()= default;
         virtual bool getBytes(size_t begin, size_t end, std::vector<uint8_t> &data) const = 0;
 };
 
 class SinkInterface
 {
     public:
-        virtual ~SinkInterface()= default;
         virtual void saveData(const std::string& fileName, const std::string& start_convert_bytes) const = 0;
 };
 
@@ -47,7 +45,6 @@ class Sink : public SinkInterface
 {
     public:
         void saveData (const std::string& fileName, const std::string& data) const override;
-        ~Sink() override= default;
 };
 
 class ByteCodeConverter

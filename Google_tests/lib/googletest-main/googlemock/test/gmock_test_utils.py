@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""Unit test utilities for Google C++ Mocking Framework."""
+"""Unit Test utilities for Google C++ Mocking Framework."""
 
 import os
 
@@ -42,16 +42,16 @@ def GetSourceDir():
 
 
 def GetTestExecutablePath(executable_name):
-  """Returns the absolute path of the test binary given its name.
+  """Returns the absolute path of the Test binary given its name.
 
   The function will print a message and abort the program if the resulting file
   doesn't exist.
 
   Args:
-    executable_name: name of the test binary that the test script runs.
+    executable_name: name of the Test binary that the Test script runs.
 
   Returns:
-    The absolute path of the test binary.
+    The absolute path of the Test binary.
   """
 
   return gtest_test_utils.GetTestExecutablePath(executable_name)
@@ -86,6 +86,6 @@ PREMATURE_EXIT_FILE_ENV_VAR = gtest_test_utils.PREMATURE_EXIT_FILE_ENV_VAR
 
 
 def Main():
-  """Runs the unit test."""
+  """Runs the unit Test."""
 
   gtest_test_utils.Main()

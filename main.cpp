@@ -1,12 +1,12 @@
 
 #include <iostream>
-#include "Utilities/Utilities.h"
-#include "ByteCodeConverter/ByteCodeConverter.h"
+#include "Sources/Utilities/Utilities.h"
+#include "Sources/ByteCodeConverter/ByteCodeConverter.h"
 
 int main() {
 
-    std::string inputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/data.bin";
-    std::string outputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/save.bin";
+    std::string inputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/Source/data.bin";
+    std::string outputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/Source/save.txt";
 
     //Some unsigned integers
     std::vector<uint8_t> unsigned_integer_array;
@@ -35,6 +35,7 @@ int main() {
     letter_array.emplace_back(std::bitset<8>("10001111").to_ulong()); // p
     letter_array.emplace_back(std::bitset<8>("10000000").to_ulong()); // a
     letter_array.emplace_back(std::bitset<8>("10011001").to_ulong()); // z
+    letter_array.emplace_back(std::bitset<8>("10111111").to_ulong()); // broken_byte
 
     writeBytesIntoFile(letter_array, inputFileName);
 
@@ -45,15 +46,25 @@ int main() {
 
     ByteCodeConverter byteCodeConverter;
 
-//    EXPECT_CALL(byteCodeConverter, start_convert_bytes(std::ref(source), std::ref(sink), inputFileName));//.Times(1);
-
     byteCodeConverter.start_convert_bytes(source, sink, outputFileName);
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 
     std::string result = readConvertedFile(outputFileName);
 
     std::string valid_str = "132906321-15-190-3121dlpaz";
+
+    if (valid_str == result)
+    {
+        std::cout << "Strings are equal" << std::endl;
+    }
+    else
+    {
+        std::cout << "Strings aren't equal" << std::endl;
+    }
+
+    std::cout << "Result string: " << result << std::endl;
+    std::cout << "Test string: " << valid_str << std::endl;
 
     return 0;
 }

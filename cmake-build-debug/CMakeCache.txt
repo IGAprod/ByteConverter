@@ -326,7 +326,7 @@ Testing_IS_TOP_LEVEL:STATIC=ON
 Testing_SOURCE_DIR:STATIC=/home/igorkinev/Desktop/testing/repo/ByteConverter
 
 //Value Computed by CMake
-gmock_BINARY_DIR:STATIC=/home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/Google_tests/lib/googletest-main/googlemock
+gmock_BINARY_DIR:STATIC=/home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/Test/googlemock
 
 //Value Computed by CMake
 gmock_IS_TOP_LEVEL:STATIC=OFF
@@ -344,7 +344,7 @@ gmock_build_tests:BOOL=OFF
 gmock_main_LIB_DEPENDS:STATIC=general;gmock;
 
 //Value Computed by CMake
-googletest-distribution_BINARY_DIR:STATIC=/home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/Google_tests/lib/googletest-main
+googletest-distribution_BINARY_DIR:STATIC=/home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/Test
 
 //Value Computed by CMake
 googletest-distribution_IS_TOP_LEVEL:STATIC=OFF
@@ -353,7 +353,7 @@ googletest-distribution_IS_TOP_LEVEL:STATIC=OFF
 googletest-distribution_SOURCE_DIR:STATIC=/home/igorkinev/Desktop/testing/repo/ByteConverter/Google_tests/lib/googletest-main
 
 //Value Computed by CMake
-gtest_BINARY_DIR:STATIC=/home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/Google_tests/lib/googletest-main/googletest
+gtest_BINARY_DIR:STATIC=/home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/Test/googletest
 
 //Value Computed by CMake
 gtest_IS_TOP_LEVEL:STATIC=OFF
@@ -593,7 +593,7 @@ _Python_Interpreter_REASON_FAILURE:INTERNAL=
 //NumPy reason failure
 _Python_NumPy_REASON_FAILURE:INTERNAL=
 cmake_package_name:INTERNAL=GTest
-generated_dir:INTERNAL=/home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/Google_tests/lib/googletest-main/googletest/generated
+generated_dir:INTERNAL=/home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/Test/googletest/generated
 //ADVANCED property for variable: gmock_build_tests
 gmock_build_tests-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: gtest_build_samples

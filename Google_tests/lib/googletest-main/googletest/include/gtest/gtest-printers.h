@@ -488,7 +488,7 @@ GTEST_API_ void PrintTo(__int128_t v, ::std::ostream* os);
 #endif  // __SIZEOF_INT128__
 
 // The default resolution used to print floating-point values uses only
-// 6 digits, which can be confusing if a test compares two values whose
+// 6 digits, which can be confusing if a Test compares two values whose
 // difference lies in the 7th digit.  So we'd like to print out numbers
 // in full precision.
 // However if the value is something simple like 1.1, full will print a

@@ -39,7 +39,7 @@ namespace {
 
 // Tests the TestPartResult class.
 
-// The test fixture for testing TestPartResult.
+// The Test fixture for testing TestPartResult.
 class TestPartResultTest : public Test {
  protected:
   TestPartResultTest()

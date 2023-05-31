@@ -73,8 +73,8 @@ typedef PrematureExitTest PrematureExitDeathTest;
 
 // Tests that:
 //   - the premature-exit file exists during the execution of a
-//     death test (EXPECT_DEATH*), and
-//   - a death test doesn't interfere with the main test process's
+//     death Test (EXPECT_DEATH*), and
+//   - a death Test doesn't interfere with the main Test process's
 //     handling of the premature-exit file.
 TEST_F(PrematureExitDeathTest, FileExistsDuringExecutionOfDeathTest) {
   if (*premature_exit_file_path_ == '\0') {
@@ -83,10 +83,10 @@ TEST_F(PrematureExitDeathTest, FileExistsDuringExecutionOfDeathTest) {
 
   EXPECT_DEATH_IF_SUPPORTED(
       {
-        // If the file exists, crash the process such that the main test
+        // If the file exists, crash the process such that the main Test
         // process will catch the (expected) crash and report a success;
-        // otherwise don't crash, which will cause the main test process
-        // to report that the death test has failed.
+        // otherwise don't crash, which will cause the main Test process
+        // to report that the death Test has failed.
         if (PrematureExitFileExists()) {
           exit(1);
         }
@@ -95,7 +95,7 @@ TEST_F(PrematureExitDeathTest, FileExistsDuringExecutionOfDeathTest) {
 }
 
 // Tests that the premature-exit file exists during the execution of a
-// normal (non-death) test.
+// normal (non-death) Test.
 TEST_F(PrematureExitTest, PrematureExitFileExistsDuringTestExecution) {
   if (*premature_exit_file_path_ == '\0') {
     return;
@@ -103,7 +103,7 @@ TEST_F(PrematureExitTest, PrematureExitFileExistsDuringTestExecution) {
 
   EXPECT_TRUE(PrematureExitFileExists())
       << " file " << premature_exit_file_path_
-      << " should exist during test execution, but doesn't.";
+      << " should exist during Test execution, but doesn't.";
 }
 
 }  // namespace
@@ -118,7 +118,7 @@ int main(int argc, char** argv) {
   if (filepath != nullptr && *filepath != '\0') {
     if (PrematureExitTest::FileExists(filepath)) {
       printf(
-          "File %s shouldn't exist after the test program finishes, but does.",
+          "File %s shouldn't exist after the Test program finishes, but does.",
           filepath);
       return 1;
     }

@@ -1637,7 +1637,7 @@ TEST(PrintToStringTest, PrintReferenceToStreamableInGlobal) {
 }
 
 TEST(IsValidUTF8Test, IllFormedUTF8) {
-  // The following test strings are ill-formed UTF-8 and are printed
+  // The following Test strings are ill-formed UTF-8 and are printed
   // as hex only (or ASCII, in case of ASCII bytes) because IsValidUTF8() is
   // expected to fail, thus output does not contain "As Text:".
 

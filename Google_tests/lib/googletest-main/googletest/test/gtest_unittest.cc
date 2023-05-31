@@ -152,7 +152,7 @@ TEST_F(StreamingListenerTest, OnTestPartResult) {
 #endif  // GTEST_CAN_STREAM_RESULTS_
 
 // Provides access to otherwise private parts of the TestEventListeners class
-// that are needed to test it.
+// that are needed to Test it.
 class TestEventListenersAccessor {
  public:
   static TestEventListener* GetRepeater(TestEventListeners* listeners) {
@@ -315,7 +315,7 @@ TEST(GetNextRandomSeedTest, WorksForValidInput) {
             GetNextRandomSeed(kMaxRandomSeed - 1));
   EXPECT_EQ(1, GetNextRandomSeed(kMaxRandomSeed));
 
-  // We deliberately don't test GetNextRandomSeed() with invalid
+  // We deliberately don't Test GetNextRandomSeed() with invalid
   // inputs, as that requires death tests, which are expensive.  This
   // is fine as GetNextRandomSeed() is internal and has a
   // straightforward definition.
@@ -1158,7 +1158,7 @@ class ScopedFakeTestPartResultReporterTest : public Test {
   }
 };
 
-// Tests that ScopedFakeTestPartResultReporter intercepts test
+// Tests that ScopedFakeTestPartResultReporter intercepts Test
 // failures.
 TEST_F(ScopedFakeTestPartResultReporterTest, InterceptsTestFailures) {
   TestPartResultArray results;
@@ -1233,7 +1233,7 @@ TEST_F(ExpectFatalFailureTest, AcceptsStdStringObject) {
 }
 
 TEST_F(ExpectFatalFailureTest, CatchesFatalFailureOnAllThreads) {
-  // We have another test below to verify that the macro catches fatal
+  // We have another Test below to verify that the macro catches fatal
   // failures generated on another thread.
   EXPECT_FATAL_FAILURE_ON_ALL_THREADS(AddFatalFailure(),
                                       "Expected fatal failure.");
@@ -1318,7 +1318,7 @@ TEST_F(ExpectNonfatalFailureTest, AcceptsStdStringObject) {
 }
 
 TEST_F(ExpectNonfatalFailureTest, CatchesNonfatalFailureOnAllThreads) {
-  // We have another test below to verify that the macro catches
+  // We have another Test below to verify that the macro catches
   // non-fatal failures generated on another thread.
   EXPECT_NONFATAL_FAILURE_ON_ALL_THREADS(AddNonfatalFailure(),
                                          "Expected non-fatal failure.");
@@ -1378,7 +1378,7 @@ TEST(TestPropertyTest, SetValue) {
 
 // Tests the TestResult class
 
-// The test fixture for testing TestResult.
+// The Test fixture for testing TestResult.
 class TestResultTest : public Test {
  protected:
   typedef std::vector<TestPartResult> TPRVector;
@@ -1404,7 +1404,7 @@ class TestResultTest : public Test {
     r1 = new TestResult();
     r2 = new TestResult();
 
-    // In order to test TestResult, we need to modify its internal
+    // In order to Test TestResult, we need to modify its internal
     // state, in particular the TestPartResult vector it holds.
     // test_part_results() returns a const reference to this vector.
     // We cast it to a non-const object s.t. it can be modified
@@ -1564,13 +1564,13 @@ TEST(TestResultPropertyTest, GetTestProperty) {
 
 // Tests the Test class.
 //
-// It's difficult to test every public method of this class (we are
-// already stretching the limit of Google Test by using it to test itself!).
+// It's difficult to Test every public method of this class (we are
+// already stretching the limit of Google Test by using it to Test itself!).
 // Fortunately, we don't have to do that, as we are already testing
 // the functionalities of the Test class extensively by using Google Test
 // alone.
 //
-// Therefore, this section only contains one test.
+// Therefore, this section only contains one Test.
 
 // Tests that GTestFlagSaver works on Windows and Mac.
 
@@ -1578,7 +1578,7 @@ class GTestFlagSaverTest : public Test {
  protected:
   // Saves the Google Test flags such that we can restore them later, and
   // then sets them to their default values.  This will be called
-  // before the first test in this test case is run.
+  // before the first Test in this Test case is run.
   static void SetUpTestSuite() {
     saver_ = new GTestFlagSaver;
 
@@ -1603,7 +1603,7 @@ class GTestFlagSaverTest : public Test {
   }
 
   // Restores the Google Test flags that the tests have modified.  This will
-  // be called after the last test in this test case is run.
+  // be called after the last Test in this Test case is run.
   static void TearDownTestSuite() {
     delete saver_;
     saver_ = nullptr;
@@ -1652,7 +1652,7 @@ class GTestFlagSaverTest : public Test {
   }
 
  private:
-  // For saving Google Test flags during this test case.
+  // For saving Google Test flags during this Test case.
   static GTestFlagSaver* saver_;
 };
 
@@ -1661,10 +1661,10 @@ GTestFlagSaver* GTestFlagSaverTest::saver_ = nullptr;
 // Google Test doesn't guarantee the order of tests.  The following two
 // tests are designed to work regardless of their order.
 
-// Modifies the Google Test flags in the test body.
+// Modifies the Google Test flags in the Test body.
 TEST_F(GTestFlagSaverTest, ModifyGTestFlags) { VerifyAndModifyFlags(); }
 
-// Verifies that the Google Test flags in the body of the previous test were
+// Verifies that the Google Test flags in the body of the previous Test were
 // restored to their original values.
 TEST_F(GTestFlagSaverTest, VerifyGTestFlags) { VerifyAndModifyFlags(); }
 
@@ -1886,7 +1886,7 @@ TEST_F(ShouldShardTest, ReturnsFalseWhenTotalShardIsOne) {
 }
 
 // Tests that sharding is enabled if total_shards > 1 and
-// we are not in a death test subprocess.
+// we are not in a death Test subprocess.
 // Environment variables are not supported on Windows CE.
 #ifndef GTEST_OS_WINDOWS_MOBILE
 TEST_F(ShouldShardTest, WorksWhenShardEnvVarsAreValid) {
@@ -1936,7 +1936,7 @@ TEST(ShouldRunTestOnShardTest, IsPartitionWhenThereAreFiveShards) {
   const int num_tests = 17;
   const int num_shards = 5;
 
-  // Check partitioning: each test should be on exactly 1 shard.
+  // Check partitioning: each Test should be on exactly 1 shard.
   for (int test_id = 0; test_id < num_tests; test_id++) {
     int prev_selected_shard_index = -1;
     for (int shard_index = 0; shard_index < num_shards; shard_index++) {
@@ -1945,7 +1945,7 @@ TEST(ShouldRunTestOnShardTest, IsPartitionWhenThereAreFiveShards) {
           prev_selected_shard_index = shard_index;
         } else {
           ADD_FAILURE() << "Shard " << prev_selected_shard_index << " and "
-                        << shard_index << " are both selected to run test "
+                        << shard_index << " are both selected to run Test "
                         << test_id;
         }
       }
@@ -2142,7 +2142,7 @@ class UnitTestRecordPropertyTestEnvironment : public Environment {
   }
 };
 
-// This will test property recording outside of any test or test case.
+// This will Test property recording outside of any Test or Test case.
 static Environment* record_property_env GTEST_ATTRIBUTE_UNUSED_ =
     AddGlobalTestEnvironment(new UnitTestRecordPropertyTestEnvironment);
 
@@ -3111,52 +3111,52 @@ TEST_F(DoubleTest, DoubleLEFails) {
       "(values_.nan1) <= (values_.nan1)");
 }
 
-// Verifies that a test or test case whose name starts with DISABLED_ is
+// Verifies that a Test or Test case whose name starts with DISABLED_ is
 // not run.
 
-// A test whose name starts with DISABLED_.
+// A Test whose name starts with DISABLED_.
 // Should not run.
 TEST(DisabledTest, DISABLED_TestShouldNotRun) {
-  FAIL() << "Unexpected failure: Disabled test should not be run.";
+  FAIL() << "Unexpected failure: Disabled Test should not be run.";
 }
 
-// A test whose name does not start with DISABLED_.
+// A Test whose name does not start with DISABLED_.
 // Should run.
 TEST(DisabledTest, NotDISABLED_TestShouldRun) { EXPECT_EQ(1, 1); }
 
-// A test case whose name starts with DISABLED_.
+// A Test case whose name starts with DISABLED_.
 // Should not run.
 TEST(DISABLED_TestSuite, TestShouldNotRun) {
-  FAIL() << "Unexpected failure: Test in disabled test case should not be run.";
+  FAIL() << "Unexpected failure: Test in disabled Test case should not be run.";
 }
 
-// A test case and test whose names start with DISABLED_.
+// A Test case and Test whose names start with DISABLED_.
 // Should not run.
 TEST(DISABLED_TestSuite, DISABLED_TestShouldNotRun) {
-  FAIL() << "Unexpected failure: Test in disabled test case should not be run.";
+  FAIL() << "Unexpected failure: Test in disabled Test case should not be run.";
 }
 
-// Check that when all tests in a test case are disabled, SetUpTestSuite() and
+// Check that when all tests in a Test case are disabled, SetUpTestSuite() and
 // TearDownTestSuite() are not called.
 class DisabledTestsTest : public Test {
  protected:
   static void SetUpTestSuite() {
-    FAIL() << "Unexpected failure: All tests disabled in test case. "
+    FAIL() << "Unexpected failure: All tests disabled in Test case. "
               "SetUpTestSuite() should not be called.";
   }
 
   static void TearDownTestSuite() {
-    FAIL() << "Unexpected failure: All tests disabled in test case. "
+    FAIL() << "Unexpected failure: All tests disabled in Test case. "
               "TearDownTestSuite() should not be called.";
   }
 };
 
 TEST_F(DisabledTestsTest, DISABLED_TestShouldNotRun_1) {
-  FAIL() << "Unexpected failure: Disabled test should not be run.";
+  FAIL() << "Unexpected failure: Disabled Test should not be run.";
 }
 
 TEST_F(DisabledTestsTest, DISABLED_TestShouldNotRun_2) {
-  FAIL() << "Unexpected failure: Disabled test should not be run.";
+  FAIL() << "Unexpected failure: Disabled Test should not be run.";
 }
 
 // Tests that disabled typed tests aren't run.
@@ -3168,7 +3168,7 @@ typedef testing::Types<int, double> NumericTypes;
 TYPED_TEST_SUITE(TypedTest, NumericTypes);
 
 TYPED_TEST(TypedTest, DISABLED_ShouldNotRun) {
-  FAIL() << "Unexpected failure: Disabled typed test should not run.";
+  FAIL() << "Unexpected failure: Disabled typed Test should not run.";
 }
 
 template <typename T>
@@ -3177,7 +3177,7 @@ class DISABLED_TypedTest : public Test {};
 TYPED_TEST_SUITE(DISABLED_TypedTest, NumericTypes);
 
 TYPED_TEST(DISABLED_TypedTest, ShouldNotRun) {
-  FAIL() << "Unexpected failure: Disabled typed test should not run.";
+  FAIL() << "Unexpected failure: Disabled typed Test should not run.";
 }
 
 // Tests that disabled type-parameterized tests aren't run.
@@ -3189,7 +3189,7 @@ TYPED_TEST_SUITE_P(TypedTestP);
 
 TYPED_TEST_P(TypedTestP, DISABLED_ShouldNotRun) {
   FAIL() << "Unexpected failure: "
-         << "Disabled type-parameterized test should not run.";
+         << "Disabled type-parameterized Test should not run.";
 }
 
 REGISTER_TYPED_TEST_SUITE_P(TypedTestP, DISABLED_ShouldNotRun);
@@ -3203,7 +3203,7 @@ TYPED_TEST_SUITE_P(DISABLED_TypedTestP);
 
 TYPED_TEST_P(DISABLED_TypedTestP, ShouldNotRun) {
   FAIL() << "Unexpected failure: "
-         << "Disabled type-parameterized test should not run.";
+         << "Disabled type-parameterized Test should not run.";
 }
 
 REGISTER_TYPED_TEST_SUITE_P(DISABLED_TypedTestP, ShouldNotRun);
@@ -3214,12 +3214,12 @@ INSTANTIATE_TYPED_TEST_SUITE_P(My, DISABLED_TypedTestP, NumericTypes);
 
 class SingleEvaluationTest : public Test {
  public:  // Must be public and not protected due to a bug in g++ 3.4.2.
-  // This helper function is needed by the FailedASSERT_STREQ test
+  // This helper function is needed by the FailedASSERT_STREQ Test
   // below.  It's public to work around C++Builder's bug with scoping local
   // classes.
   static void CompareAndIncrementCharPtrs() { ASSERT_STREQ(p1_++, p2_++); }
 
-  // This helper function is needed by the FailedASSERT_NE test below.  It's
+  // This helper function is needed by the FailedASSERT_NE Test below.  It's
   // public to work around C++Builder's bug with scoping local classes.
   static void CompareAndIncrementInts() { ASSERT_NE(a_++, b_++); }
 
@@ -3823,7 +3823,7 @@ TEST(AssertionTest, ASSERT_ANY_THROW) {
 
 #endif  // GTEST_HAS_EXCEPTIONS
 
-// Makes sure we deal with the precedence of <<.  This test should
+// Makes sure we deal with the precedence of <<.  This Test should
 // compile.
 TEST(AssertionTest, AssertPrecedence) {
   ASSERT_EQ(1 < 2, true);
@@ -3831,10 +3831,10 @@ TEST(AssertionTest, AssertPrecedence) {
   ASSERT_EQ(true && false_value, false);
 }
 
-// A subroutine used by the following test.
+// A subroutine used by the following Test.
 void TestEq1(int x) { ASSERT_EQ(1, x); }
 
-// Tests calling a test subroutine that's not part of a fixture.
+// Tests calling a Test subroutine that's not part of a fixture.
 TEST(AssertionTest, NonFixtureSubroutine) {
   EXPECT_FATAL_FAILURE(TestEq1(2), "  x\n    Which is: 2");
 }
@@ -3863,12 +3863,12 @@ class Uncopyable {
 
 bool IsPositiveUncopyable(const Uncopyable& x) { return x.value() > 0; }
 
-// A subroutine used by the following test.
+// A subroutine used by the following Test.
 void TestAssertNonPositive() {
   Uncopyable y(-1);
   ASSERT_PRED1(IsPositiveUncopyable, y);
 }
-// A subroutine used by the following test.
+// A subroutine used by the following Test.
 void TestAssertEqualsUncopyable() {
   Uncopyable x(5);
   Uncopyable y(-1);
@@ -3920,14 +3920,14 @@ enum {
 
 #ifdef GTEST_OS_LINUX
 
-  // We want to test the case where the size of the anonymous enum is
+  // We want to Test the case where the size of the anonymous enum is
   // larger than sizeof(int), to make sure our implementation of the
   // assertions doesn't truncate the enums.  However, MSVC
   // (incorrectly) doesn't allow an enum value to exceed the range of
   // an int, so this has to be conditionally compiled.
   //
   // On Linux, kCaseB and kCaseA have the same value when truncated to
-  // int size.  We want to test whether this will confuse the
+  // int size.  We want to Test whether this will confuse the
   // assertions.
   kCaseB = testing::internal::kMaxBiggestInt,
 
@@ -3983,7 +3983,7 @@ static HRESULT OkHRESULTSuccess() { return S_OK; }
 
 static HRESULT FalseHRESULTSuccess() { return S_FALSE; }
 
-// HRESULT assertion tests test both zero and non-zero
+// HRESULT assertion tests Test both zero and non-zero
 // success codes as well as failure message for each.
 //
 // Windows CE doesn't support message texts.
@@ -4071,7 +4071,7 @@ TEST(HRESULTAssertionTest, Streaming) {
 TEST(AssertionSyntaxTest, BasicAssertionsBehavesLikeSingleStatement) {
   if (AlwaysFalse())
     ASSERT_TRUE(false) << "This should never be executed; "
-                          "It's a compilation test only.";
+                          "It's a compilation Test only.";
 
   if (AlwaysTrue())
     EXPECT_FALSE(false);
@@ -4153,7 +4153,7 @@ TEST(AssertionSyntaxTest, ExceptionAssertionsBehavesLikeSingleStatement) {
 TEST(AssertionSyntaxTest, NoFatalFailureAssertionsBehavesLikeSingleStatement) {
   if (AlwaysFalse())
     EXPECT_NO_FATAL_FAILURE(FAIL()) << "This should never be executed. "
-                                    << "It's a compilation test only.";
+                                    << "It's a compilation Test only.";
   else
     ;  // NOLINT
 
@@ -4190,7 +4190,7 @@ TEST(AssertionSyntaxTest, WorksWithSwitch) {
     EXPECT_FALSE(false) << "EXPECT_FALSE failed in switch case";
 
   // Binary assertions are implemented using a different code path
-  // than the Boolean assertions.  Hence we test them separately.
+  // than the Boolean assertions.  Hence we Test them separately.
   switch (0) {
     case 1:
     default:
@@ -4698,7 +4698,7 @@ TEST(MacroTest, GTEST_FAIL_AT) {
   // Verifies that the user-streamed part is optional.
   EXPECT_FATAL_FAILURE(GTEST_FAIL_AT("foo.cc", 42), "Failed");
 
-  // See the ADD_FAIL_AT test above to see how we test that the failure message
+  // See the ADD_FAIL_AT Test above to see how we Test that the failure message
   // contains the right filename and line number -- the same applies here.
 }
 
@@ -4779,7 +4779,7 @@ TEST(EqAssertionTest, StdString) {
 
   // Compares a const char* to an std::string that has different
   // content
-  EXPECT_NONFATAL_FAILURE(EXPECT_EQ("Test", ::std::string("test")), "\"test\"");
+  EXPECT_NONFATAL_FAILURE(EXPECT_EQ("Test", ::std::string("Test")), "\"Test\"");
 
   // Compares an std::string to a char* that has different content.
   char* const p1 = const_cast<char*>("foo");
@@ -4943,7 +4943,7 @@ TEST(ComparisonAssertionTest, AcceptsUnprintableArgs) {
 
 // Tests the FRIEND_TEST macro.
 
-// This class has a private member we want to test.  We will test it
+// This class has a private member we want to Test.  We will Test it
 // both in a TEST and in a TEST_F.
 class Foo {
  public:
@@ -4962,7 +4962,7 @@ class Foo {
 // class's private members.  This should compile.
 TEST(FRIEND_TEST_Test, TEST) { ASSERT_EQ(1, Foo().Bar()); }
 
-// The fixture needed to test using FRIEND_TEST with TEST_F.
+// The fixture needed to Test using FRIEND_TEST with TEST_F.
 class FRIEND_TEST_Test2 : public Test {
  protected:
   Foo foo;
@@ -4974,21 +4974,21 @@ TEST_F(FRIEND_TEST_Test2, TEST_F) { ASSERT_EQ(1, foo.Bar()); }
 
 // Tests the life cycle of Test objects.
 
-// The test fixture for testing the life cycle of Test objects.
+// The Test fixture for testing the life cycle of Test objects.
 //
-// This class counts the number of live test objects that uses this
+// This class counts the number of live Test objects that uses this
 // fixture.
 class TestLifeCycleTest : public Test {
  protected:
-  // Constructor.  Increments the number of test objects that uses
+  // Constructor.  Increments the number of Test objects that uses
   // this fixture.
   TestLifeCycleTest() { count_++; }
 
-  // Destructor.  Decrements the number of test objects that uses this
+  // Destructor.  Decrements the number of Test objects that uses this
   // fixture.
   ~TestLifeCycleTest() override { count_--; }
 
-  // Returns the number of live test objects that uses this fixture.
+  // Returns the number of live Test objects that uses this fixture.
   int count() const { return count_; }
 
  private:
@@ -4997,17 +4997,17 @@ class TestLifeCycleTest : public Test {
 
 int TestLifeCycleTest::count_ = 0;
 
-// Tests the life cycle of test objects.
+// Tests the life cycle of Test objects.
 TEST_F(TestLifeCycleTest, Test1) {
-  // There should be only one test object in this test case that's
+  // There should be only one Test object in this Test case that's
   // currently alive.
   ASSERT_EQ(1, count());
 }
 
-// Tests the life cycle of test objects.
+// Tests the life cycle of Test objects.
 TEST_F(TestLifeCycleTest, Test2) {
   // After Test1 is done and Test2 is started, there should still be
-  // only one live test object, as the object for Test1 should've been
+  // only one live Test object, as the object for Test1 should've been
   // deleted.
   ASSERT_EQ(1, count());
 }
@@ -5077,7 +5077,7 @@ TEST(AssertionResultTest, CanStreamOstreamManipulators) {
   EXPECT_STREQ("Data\n\\0Will be visible", r.message());
 }
 
-// The next test uses explicit conversion operators
+// The next Test uses explicit conversion operators
 
 TEST(AssertionResultTest, ConstructibleFromContextuallyConvertibleToBool) {
   struct ExplicitlyConvertibleToBool {
@@ -5266,7 +5266,7 @@ TEST_F(TestInfoTest, Names) {
 TEST_F(TestInfoTest, result) {
   const TestInfo* const test_info = GetTestInfo("result");
 
-  // Initially, there is no TestPartResult for this test.
+  // Initially, there is no TestPartResult for this Test.
   ASSERT_EQ(0, GetTestResult(test_info)->total_part_count());
 
   // After the previous assertion, there is still none.
@@ -5324,34 +5324,34 @@ INSTANTIATE_TYPED_TEST_SUITE_P(My, CodeLocationForTYPEDTESTP, int);
 #undef VERIFY_CODE_LOCATION
 // clang-format on
 
-// Tests setting up and tearing down a test case.
+// Tests setting up and tearing down a Test case.
 // Legacy API is deprecated but still available
 #ifndef GTEST_REMOVE_LEGACY_TEST_CASEAPI_
 class SetUpTestCaseTest : public Test {
  protected:
-  // This will be called once before the first test in this test case
+  // This will be called once before the first Test in this Test case
   // is run.
   static void SetUpTestCase() {
-    printf("Setting up the test case . . .\n");
+    printf("Setting up the Test case . . .\n");
 
     // Initializes some shared resource.  In this simple example, we
     // just create a C string.  More complex stuff can be done if
     // desired.
     shared_resource_ = "123";
 
-    // Increments the number of test cases that have been set up.
+    // Increments the number of Test cases that have been set up.
     counter_++;
 
     // SetUpTestCase() should be called only once.
     EXPECT_EQ(1, counter_);
   }
 
-  // This will be called once after the last test in this test case is
+  // This will be called once after the last Test in this Test case is
   // run.
   static void TearDownTestCase() {
-    printf("Tearing down the test case . . .\n");
+    printf("Tearing down the Test case . . .\n");
 
-    // Decrements the number of test cases that have been set up.
+    // Decrements the number of Test cases that have been set up.
     counter_--;
 
     // TearDownTestCase() should be called only once.
@@ -5361,56 +5361,56 @@ class SetUpTestCaseTest : public Test {
     shared_resource_ = nullptr;
   }
 
-  // This will be called before each test in this test case.
+  // This will be called before each Test in this Test case.
   void SetUp() override {
     // SetUpTestCase() should be called only once, so counter_ should
     // always be 1.
     EXPECT_EQ(1, counter_);
   }
 
-  // Number of test cases that have been set up.
+  // Number of Test cases that have been set up.
   static int counter_;
 
-  // Some resource to be shared by all tests in this test case.
+  // Some resource to be shared by all tests in this Test case.
   static const char* shared_resource_;
 };
 
 int SetUpTestCaseTest::counter_ = 0;
 const char* SetUpTestCaseTest::shared_resource_ = nullptr;
 
-// A test that uses the shared resource.
+// A Test that uses the shared resource.
 TEST_F(SetUpTestCaseTest, Test1) { EXPECT_STRNE(nullptr, shared_resource_); }
 
-// Another test that uses the shared resource.
+// Another Test that uses the shared resource.
 TEST_F(SetUpTestCaseTest, Test2) { EXPECT_STREQ("123", shared_resource_); }
 #endif  //  GTEST_REMOVE_LEGACY_TEST_CASEAPI_
 
 // Tests SetupTestSuite/TearDown TestSuite
 class SetUpTestSuiteTest : public Test {
  protected:
-  // This will be called once before the first test in this test case
+  // This will be called once before the first Test in this Test case
   // is run.
   static void SetUpTestSuite() {
-    printf("Setting up the test suite . . .\n");
+    printf("Setting up the Test suite . . .\n");
 
     // Initializes some shared resource.  In this simple example, we
     // just create a C string.  More complex stuff can be done if
     // desired.
     shared_resource_ = "123";
 
-    // Increments the number of test cases that have been set up.
+    // Increments the number of Test cases that have been set up.
     counter_++;
 
     // SetUpTestSuite() should be called only once.
     EXPECT_EQ(1, counter_);
   }
 
-  // This will be called once after the last test in this test case is
+  // This will be called once after the last Test in this Test case is
   // run.
   static void TearDownTestSuite() {
-    printf("Tearing down the test suite . . .\n");
+    printf("Tearing down the Test suite . . .\n");
 
-    // Decrements the number of test suites that have been set up.
+    // Decrements the number of Test suites that have been set up.
     counter_--;
 
     // TearDownTestSuite() should be called only once.
@@ -5420,34 +5420,34 @@ class SetUpTestSuiteTest : public Test {
     shared_resource_ = nullptr;
   }
 
-  // This will be called before each test in this test case.
+  // This will be called before each Test in this Test case.
   void SetUp() override {
     // SetUpTestSuite() should be called only once, so counter_ should
     // always be 1.
     EXPECT_EQ(1, counter_);
   }
 
-  // Number of test suites that have been set up.
+  // Number of Test suites that have been set up.
   static int counter_;
 
-  // Some resource to be shared by all tests in this test case.
+  // Some resource to be shared by all tests in this Test case.
   static const char* shared_resource_;
 };
 
 int SetUpTestSuiteTest::counter_ = 0;
 const char* SetUpTestSuiteTest::shared_resource_ = nullptr;
 
-// A test that uses the shared resource.
+// A Test that uses the shared resource.
 TEST_F(SetUpTestSuiteTest, TestSetupTestSuite1) {
   EXPECT_STRNE(nullptr, shared_resource_);
 }
 
-// Another test that uses the shared resource.
+// Another Test that uses the shared resource.
 TEST_F(SetUpTestSuiteTest, TestSetupTestSuite2) {
   EXPECT_STREQ("123", shared_resource_);
 }
 
-// The ParseFlagsTest test case tests ParseGoogleTestFlagsOnly.
+// The ParseFlagsTest Test case tests ParseGoogleTestFlagsOnly.
 
 // The Flags struct stores a copy of all Google Test flags.
 struct Flags {
@@ -5634,7 +5634,7 @@ struct Flags {
 // Fixture for testing ParseGoogleTestFlagsOnly().
 class ParseFlagsTest : public Test {
  protected:
-  // Clears the flags before each test.
+  // Clears the flags before each Test.
   void SetUp() override {
     GTEST_FLAG_SET(also_run_disabled_tests, false);
     GTEST_FLAG_SET(break_on_failure, false);
@@ -6329,8 +6329,8 @@ TEST_F(FlagfileTest, SeveralFlags) {
 // Tests current_test_info() in UnitTest.
 class CurrentTestInfoTest : public Test {
  protected:
-  // Tests that current_test_info() returns NULL before the first test in
-  // the test case is run.
+  // Tests that current_test_info() returns NULL before the first Test in
+  // the Test case is run.
   static void SetUpTestSuite() {
     // There should be no tests running at this point.
     const TestInfo* test_info = UnitTest::GetInstance()->current_test_info();
@@ -6338,8 +6338,8 @@ class CurrentTestInfoTest : public Test {
         << "There should be no tests running at this point.";
   }
 
-  // Tests that current_test_info() returns NULL after the last test in
-  // the test case has run.
+  // Tests that current_test_info() returns NULL after the last Test in
+  // the Test case has run.
   static void TearDownTestSuite() {
     const TestInfo* test_info = UnitTest::GetInstance()->current_test_info();
     EXPECT_TRUE(test_info == nullptr)
@@ -6348,34 +6348,34 @@ class CurrentTestInfoTest : public Test {
 };
 
 // Tests that current_test_info() returns TestInfo for currently running
-// test by checking the expected test name against the actual one.
+// Test by checking the expected Test name against the actual one.
 TEST_F(CurrentTestInfoTest, WorksForFirstTestInATestSuite) {
   const TestInfo* test_info = UnitTest::GetInstance()->current_test_info();
   ASSERT_TRUE(nullptr != test_info)
-      << "There is a test running so we should have a valid TestInfo.";
+      << "There is a Test running so we should have a valid TestInfo.";
   EXPECT_STREQ("CurrentTestInfoTest", test_info->test_suite_name())
-      << "Expected the name of the currently running test suite.";
+      << "Expected the name of the currently running Test suite.";
   EXPECT_STREQ("WorksForFirstTestInATestSuite", test_info->name())
-      << "Expected the name of the currently running test.";
+      << "Expected the name of the currently running Test.";
 }
 
 // Tests that current_test_info() returns TestInfo for currently running
-// test by checking the expected test name against the actual one.  We
-// use this test to see that the TestInfo object actually changed from
+// Test by checking the expected Test name against the actual one.  We
+// use this Test to see that the TestInfo object actually changed from
 // the previous invocation.
 TEST_F(CurrentTestInfoTest, WorksForSecondTestInATestSuite) {
   const TestInfo* test_info = UnitTest::GetInstance()->current_test_info();
   ASSERT_TRUE(nullptr != test_info)
-      << "There is a test running so we should have a valid TestInfo.";
+      << "There is a Test running so we should have a valid TestInfo.";
   EXPECT_STREQ("CurrentTestInfoTest", test_info->test_suite_name())
-      << "Expected the name of the currently running test suite.";
+      << "Expected the name of the currently running Test suite.";
   EXPECT_STREQ("WorksForSecondTestInATestSuite", test_info->name())
-      << "Expected the name of the currently running test.";
+      << "Expected the name of the currently running Test.";
 }
 
 }  // namespace testing
 
-// These two lines test that we can define tests in a namespace that
+// These two lines Test that we can define tests in a namespace that
 // has the name "testing" and is nested in another namespace.
 namespace my_namespace {
 namespace testing {
@@ -6409,7 +6409,7 @@ TEST(NestedTestingNamespaceTest, Failure) {
 
 // Tests that one can call superclass SetUp and TearDown methods--
 // that is, that they are not private.
-// No tests are based on this fixture; the test "passes" if it compiles
+// No tests are based on this fixture; the Test "passes" if it compiles
 // successfully.
 class ProtectedFixtureMethodsTest : public Test {
  protected:
@@ -6735,7 +6735,7 @@ TEST(HasNonfatalFailureTest, ReturnsTrueWhenThereAreFatalAndNonfatalFailures) {
   EXPECT_TRUE(has_nonfatal_failure);
 }
 
-// A wrapper for calling HasNonfatalFailure outside of a test body.
+// A wrapper for calling HasNonfatalFailure outside of a Test body.
 static bool HasNonfatalFailureHelper() {
   return testing::Test::HasNonfatalFailure();
 }
@@ -6777,7 +6777,7 @@ TEST(HasFailureTest, ReturnsTrueWhenThereAreFatalAndNonfatalFailures) {
   EXPECT_TRUE(has_failure);
 }
 
-// A wrapper for calling HasFailure outside of a test body.
+// A wrapper for calling HasFailure outside of a Test body.
 static bool HasFailureHelper() { return testing::Test::HasFailure(); }
 
 TEST(HasFailureTest, WorksOutsideOfTestBody) {
@@ -6949,7 +6949,7 @@ TEST(TestEventListenersTest, Release) {
   bool is_destroyed = false;
   // Although Append passes the ownership of this object to the list,
   // the following calls release it, and we need to delete it before the
-  // test ends.
+  // Test ends.
   TestListener* listener = new TestListener(&on_start_counter, &is_destroyed);
   {
     TestEventListeners listeners;
@@ -6980,7 +6980,7 @@ TEST(EventListenerTest, SuppressEventForwarding) {
 }
 
 // Tests that events generated by Google Test are not forwarded in
-// death test subprocesses.
+// death Test subprocesses.
 TEST(EventListenerDeathTest, EventsNotForwardedInDeathTestSubprocesses) {
   EXPECT_DEATH_IF_SUPPORTED(
       {
@@ -7030,7 +7030,7 @@ TEST(EventListenerTest, RemovingDefaultResultPrinterWorks) {
   bool is_destroyed = false;
   // Although Append passes the ownership of this object to the list,
   // the following calls release it, and we need to delete it before the
-  // test ends.
+  // Test ends.
   TestListener* listener = new TestListener(&on_start_counter, &is_destroyed);
   {
     TestEventListeners listeners;
@@ -7089,7 +7089,7 @@ TEST(EventListenerTest, RemovingDefaultXmlGeneratorWorks) {
   bool is_destroyed = false;
   // Although Append passes the ownership of this object to the list,
   // the following calls release it, and we need to delete it before the
-  // test ends.
+  // Test ends.
   TestListener* listener = new TestListener(&on_start_counter, &is_destroyed);
   {
     TestEventListeners listeners;
@@ -7110,7 +7110,7 @@ TEST(EventListenerTest, RemovingDefaultXmlGeneratorWorks) {
 }
 
 // Tests to ensure that the alternative, verbose spellings of
-// some of the macros work.  We don't test them thoroughly as that
+// some of the macros work.  We don't Test them thoroughly as that
 // would be quite involved.  Since their implementations are
 // straightforward, and they are rarely used, we'll just rely on the
 // users to tell us when they are broken.
@@ -7654,7 +7654,7 @@ TEST(FlatTuple, ManyTypes) {
 
   // Instantiate FlatTuple with 257 ints.
   // Tests show that we can do it with thousands of elements, but very long
-  // compile times makes it unusuitable for this test.
+  // compile times makes it unusuitable for this Test.
 #define GTEST_FLAT_TUPLE_INT8 int, int, int, int, int, int, int, int,
 #define GTEST_FLAT_TUPLE_INT16 GTEST_FLAT_TUPLE_INT8 GTEST_FLAT_TUPLE_INT8
 #define GTEST_FLAT_TUPLE_INT32 GTEST_FLAT_TUPLE_INT16 GTEST_FLAT_TUPLE_INT16
@@ -7731,10 +7731,10 @@ TEST(RegisterTest, WasRegistered) {
     }
   }
 
-  FAIL() << "Didn't find the test!";
+  FAIL() << "Didn't find the Test!";
 }
 
-// Test that the pattern globbing algorithm is linear. If not, this test should
+// Test that the pattern globbing algorithm is linear. If not, this Test should
 // time out.
 TEST(PatternGlobbingTest, MatchesFilterLinearRuntime) {
   std::string name(100, 'a');  // Construct the string (a^100)b

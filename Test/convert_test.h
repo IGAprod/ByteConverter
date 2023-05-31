@@ -2,10 +2,8 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "../ByteCodeConverter/ByteCodeConverter.h"
-#include "../Utilities/Utilities.h"
-#include "gtest/gtest.h"
-#include "gmock/gmock.h"
+#include "../Sources/ByteCodeConverter/ByteCodeConverter.h"
+#include "../Sources/Utilities/Utilities.h"
 #include <bitset>
 
 class MockByteCodeConverter : public ByteCodeConverter

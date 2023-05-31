@@ -1,3 +1,4 @@
 /home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/CMakeFiles/TestTask.dir
+/home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/CMakeFiles/test.dir
 /home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/igorkinev/Desktop/testing/repo/ByteConverter/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -35,12 +35,10 @@ bool Source::getBytes(size_t begin, size_t end, std::vector<uint8_t> &chunk) con
     }
 
     return true;
-};
+}
 
 void Sink::saveData (const std::string& fileName, const std::string& data) const
 {
-//    std::cout << data << std::endl;
-
     std::ofstream out;
     out.open(fileName, std::ios::app);
     if (out.is_open())
@@ -49,7 +47,7 @@ void Sink::saveData (const std::string& fileName, const std::string& data) const
     }
 
     out.close();
-};
+}
 
 std::string ByteCodeConverter::convert_bytes(std::vector<uint8_t> bytes_to_convert)
 {
@@ -58,23 +56,44 @@ std::string ByteCodeConverter::convert_bytes(std::vector<uint8_t> bytes_to_conve
     for (size_t i = 0; i < bytes_to_convert.size(); ++i)
     {
         int data_type = bytes_to_convert[i] >> 6;
+        uint8_t val;
         switch(data_type)
         {
-            unsigned char val;
             case 0x00:
                 val = bytes_to_convert[i] << 2;
                 result += std::to_string(val >> 2);
                 break;
             case 0x01:
-                if (0x1 & (bytes_to_convert[i] >> 5)) {result += '-';}
+                if (0x01 & (bytes_to_convert[i] >> 5)) {result += '-';}
                 val = bytes_to_convert[i] << 3;
                 result += std::to_string(val >> 3);
                 break;
             case 0x02:
                 val = bytes_to_convert[i] << 2;
-                result +=  char((val >> 2) + 97);
+                uint8_t letter;
+                letter = val >> 2;
+
+                if (letter > 25)
+                {
+                    std::cout << "Broken byte: ";
+                    for (size_t j = 7; j > 0; --j)
+                    {
+                        std::cout << ((bytes_to_convert[i] >> j) & 0x01);
+                    }
+                    std::cout << std::endl;
+
+                    break;
+                }
+
+                result +=  char((letter) + 97);
                 break;
             default:
+                std::cout << "Broken byte: ";
+                for (size_t j = 7; j > 0; --j)
+                {
+                    std::cout << ((bytes_to_convert[i] >> j) & 0x01);
+                }
+                std::cout << std::endl;
                 break;
         }
     }

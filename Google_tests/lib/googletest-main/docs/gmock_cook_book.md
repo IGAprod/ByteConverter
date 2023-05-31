@@ -453,7 +453,7 @@ TEST(...) {
   EXPECT_CALL(mock_foo, DoThis());
   ... code that uses mock_foo ...
 
-  // The test will fail if a method of mock_foo other than DoThis()
+  // The Test will fail if a method of mock_foo other than DoThis()
   // is called.
 }
 ```
@@ -1623,7 +1623,7 @@ TEST(...) {
   EXPECT_CALL(mock_registry, GetDomainOwner("google.com"))
           .WillRepeatedly(Return("Larry Page"));
 
-  // Use mock_registry in code under test.
+  // Use mock_registry in code under Test.
   ... &mock_registry ...
 }
 ```

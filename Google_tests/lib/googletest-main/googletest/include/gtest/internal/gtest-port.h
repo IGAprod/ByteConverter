@@ -637,7 +637,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 
 #endif  // GTEST_HAS_CLONE
 
-// Determines whether to support stream redirection. This is used to test
+// Determines whether to support stream redirection. This is used to Test
 // output correctness and to implement death tests.
 #ifndef GTEST_HAS_STREAM_REDIRECTION
 // By default, we assume that stream redirection is supported on all
@@ -689,7 +689,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 #define GTEST_WIDE_STRING_USES_UTF16_ 0
 #endif
 
-// Determines whether test results can be streamed to a socket.
+// Determines whether Test results can be streamed to a socket.
 #if defined(GTEST_OS_LINUX) || defined(GTEST_OS_GNU_KFREEBSD) || \
     defined(GTEST_OS_DRAGONFLY) || defined(GTEST_OS_FREEBSD) ||  \
     defined(GTEST_OS_NETBSD) || defined(GTEST_OS_OPENBSD) ||     \
@@ -1152,7 +1152,7 @@ inline To ImplicitCast_(To x) {
 // when you downcast, you should use this macro.  In debug mode, we
 // use dynamic_cast<> to double-check the downcast is legal (we die
 // if it's not).  In normal mode, we do the efficient static_cast<>
-// instead.  Thus, it's important to test in debug mode to make sure
+// instead.  Thus, it's important to Test in debug mode to make sure
 // the cast is legal!
 //    This is the only place in the code we should use dynamic_cast<>.
 // In particular, you SHOULDN'T be using dynamic_cast<> in order to
@@ -1166,7 +1166,7 @@ inline To ImplicitCast_(To x) {
 // namespace alone is not enough because the function can be found by ADL.
 template <typename To, typename From>  // use like this: DownCast_<T*>(foo);
 inline To DownCast_(From* f) {         // so we only accept pointers
-  // Ensures that To is a sub-type of From *.  This test is here only
+  // Ensures that To is a sub-type of From *.  This Test is here only
   // for compile-time type checking, and has no overhead in an
   // optimized build at run-time, as it will be optimized away
   // completely.
@@ -1301,7 +1301,7 @@ class GTEST_API_ Notification {
     cv_.notify_all();
   }
 
-  // Blocks until the controller thread notifies. Must be called from a test
+  // Blocks until the controller thread notifies. Must be called from a Test
   // thread.
   void WaitForNotification() {
     std::unique_lock<std::mutex> lock(mu_);

@@ -124,7 +124,7 @@ INSTANTIATE_TEST_SUITE_P(
     MyInstantiation, MyTestSuite,
     ::testing::Values(...),
     [](const ::testing::TestParamInfo<MyTestSuite::ParamType>& info) {
-      // Can use info.param here to generate the test suffix
+      // Can use info.param here to generate the Test suffix
       std::string name = ...
       return name;
     });
@@ -188,7 +188,7 @@ and `TestFixture` refers to the fixture class. See the following example:
 
 ```cpp
 TYPED_TEST(MyFixture, Example) {
-  // Inside a test, refer to the special name TypeParam to get the type
+  // Inside a Test, refer to the special name TypeParam to get the type
   // parameter.  Since we are inside a derived class template, C++ requires
   // us to visit the members of MyFixture via 'this'.
   TypeParam n = this->value_;
@@ -253,12 +253,12 @@ Registers the type-parameterized tests *`TestNames...`* of the test suite
 For example:
 
 ```cpp
-// Define the test suite and tests.
+// Define the Test suite and tests.
 TYPED_TEST_SUITE_P(MyFixture);
 TYPED_TEST_P(MyFixture, HasPropertyA) { ... }
 TYPED_TEST_P(MyFixture, HasPropertyB) { ... }
 
-// Register the tests in the test suite.
+// Register the tests in the Test suite.
 REGISTER_TYPED_TEST_SUITE_P(MyFixture, HasPropertyA, HasPropertyB);
 ```
 
@@ -1090,8 +1090,8 @@ The return type `Type` is an enum defined as follows:
 ```cpp
 enum Type {
   kSuccess,          // Succeeded.
-  kNonFatalFailure,  // Failed but the test can continue.
-  kFatalFailure,     // Failed and the test should be terminated.
+  kNonFatalFailure,  // Failed but the Test can continue.
+  kFatalFailure,     // Failed and the Test should be terminated.
   kSkip              // Skipped.
 };
 ```
