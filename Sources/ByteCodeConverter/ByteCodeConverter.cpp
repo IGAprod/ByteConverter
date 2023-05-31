@@ -151,9 +151,6 @@ void ByteCodeConverter::start_convert_bytes(SourceInterface &source, SinkInterfa
 
 void ByteCodeConverter::stop_convert_bytes()
 {
-    int* ptr = nullptr;
-    *ptr = 42;
-
     if (state != EXIT)
     {
         state = WAITING_TO_STOP;

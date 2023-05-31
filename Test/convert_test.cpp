@@ -1,5 +1,8 @@
 #include "convert_test.h"
 
+std::string inputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/Test/data_test.bin";
+std::string outputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/Test/save_test.txt";
+
 void segFaultHandler(int signal)
 {
     std::cout << "Segmentation fault" << std::endl;
@@ -8,8 +11,6 @@ void segFaultHandler(int signal)
 
 TEST(ByteCodeConverterTest, Convert)
 {
-    std::string inputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/data.bin";
-    std::string outputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/save.txt";
 
     eraseFile(inputFileName);
     eraseFile(outputFileName);
@@ -64,9 +65,6 @@ TEST(ByteCodeConverterTest, Convert)
 
 TEST(ByteCodeConverterTest, ConvertWithBrokenBytes)
 {
-    std::string inputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/data.bin";
-    std::string outputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/save.txt";
-
     eraseFile(inputFileName);
     eraseFile(outputFileName);
 
@@ -124,9 +122,6 @@ TEST(ByteCodeConverterTest, StopConvert)
 {
     signal(SIGSEGV, segFaultHandler);
 
-    std::string inputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/data.bin";
-    std::string outputFileName = "/home/igorkinev/Desktop/testing/repo/ByteConverter/resources/save.txt";
-
     eraseFile(inputFileName);
     eraseFile(outputFileName);
 
@@ -171,7 +166,6 @@ TEST(ByteCodeConverterTest, StopConvert)
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
     byteCodeConverter.stop_convert_bytes();
-
 }
 
 int main(int argc, char **argv) {

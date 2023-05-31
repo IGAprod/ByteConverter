@@ -1,6 +1,6 @@
 #include "Utilities.h"
 
-std::string readConvertedFile(std::string fileName)
+std::string readConvertedFile(const std::string& fileName)
 {
     std::string result_str;
 
